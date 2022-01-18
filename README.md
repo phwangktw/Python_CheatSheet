@@ -1,11 +1,10 @@
 # Python_CheatSheet
-Python_CheatSheet
 
-## 1. - [Python_CheatSheet](#python_cheatsheet)
+- [Python_CheatSheet](#python_cheatsheet)
   - [1. Dataframe Operations](#1-dataframe-operations)
-  - 
+  - [2. Basic Python Stuffs](#2-basic-python-stuffs)
 
-## Dataframe Operations
+## 1. Dataframe Operations
 
 1. Dataframe summary
 ```python
@@ -35,4 +34,25 @@ def summarize_df(df_input):
     
     return df_NA
 
+```
+
+## 2. Basic Python Stuffs
+
+1. Def format
+```python
+def get_jsonparsed_data(url):
+    """
+    Receive the content of ``url``, parse it as JSON and return the object.
+
+    Parameters
+    ----------
+    url : str
+
+    Returns
+    -------
+    dict
+    """
+    response = urlopen(url, cafile=certifi.where())
+    data = response.read().decode("utf-8")
+    return json.loads(data)
 ```
