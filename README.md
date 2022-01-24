@@ -121,12 +121,80 @@ dtype: float64
 
 </details>
 
-## 2. Basic Python Stuffs
+<details>
+<summary>df time expression</summary>
 
-* Def format
+  ```python  
+  df['year'] = pd.to_datetime(df['year'], format='%Y-%m')
+  
+  ```
+
+</details>
 
 <details>
-<summary>Code</summary>
+<summary>select a coulmn as new index column</summary>
+
+  `set_index`
+
+  ```python  
+  dfUse = dfUse.set_index('time_index')
+  
+  ```
+
+</details>
+
+<details>
+<summary>How to apply a function to two columns of Pandas dataframe</summary>
+
+  ```python  
+  In [49]: df
+  Out[49]: 
+            0         1
+  0  1.000000  0.000000
+  1 -0.494375  0.570994
+  2  1.000000  0.000000
+  3  1.876360 -0.229738
+  4  1.000000  0.000000
+
+  In [50]: def f(x):    
+    ....:  return x[0] + x[1]  
+    ....:  
+
+  In [51]: df.apply(f, axis=1) #passes a Series object, row-wise
+  Out[51]: 
+  0    1.000000
+  1    0.076619
+  2    1.000000
+  3    1.646622
+  4    1.000000
+  
+  ```
+
+</details>
+
+<details>
+<summary>Merge two columns in df</summary>
+
+  `pd.merge`
+
+  ```python  
+  dftemp = pd.merge(df1, df2, left_index=True, right_index=True)
+  
+  ```
+
+</details>
+
+<details>
+<summary>Series to DF</summary>
+
+  `pd.DataFrame(series_input)`
+
+</details>
+
+## 2. Basic Python Stuffs
+
+<details>
+<summary>Def format (Def_格式)</summary>
 
   ```python
   def get_jsonparsed_data(url):
@@ -144,6 +212,27 @@ dtype: float64
       response = urlopen(url, cafile=certifi.where())
       data = response.read().decode("utf-8")
       return json.loads(data)
+  ```
+
+</details>
+
+<details>
+<summary>Print format</summary>
+
+  ```python
+  #1. String + Number
+  print('RSS: %.4f'% numberHere)
+
+  ```
+
+</details>
+
+<details>
+<summary>Scientific Expression</summary>
+
+  ```python  
+  rss = "{:.2e}".format(Numhere)
+  
   ```
 
 </details>
