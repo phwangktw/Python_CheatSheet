@@ -4,6 +4,7 @@
   - [1. Dataframe Operations](#1-dataframe-operations)
   - [2. Basic Python Stuffs](#2-basic-python-stuffs)
   - [3. Visualization](#3-visualization)
+  - [4. System (pip) and Modules](#4-system-pip-and-modules)
 
 [comment]: <> (This is a comment, it will not be included:)
 
@@ -48,6 +49,23 @@
 
 ```python
 recipes_dfUse2 = recipes_dfUse[['counts_x','user_id','User_popularity']]
+```
+</details>
+
+<details>
+<summary>Load csv with header or not</summary>
+
+```python
+dfRaw = pd.read_csv('./HW1_Problem2.csv', header=None)
+dfRaw = pd.read_csv('./HW1_Problem2.csv')
+```
+</details>
+
+<details>
+<summary>Series reset_index + drop the original one</summary>
+
+```python
+reset_index(inplace=True, drop=True)
 ```
 </details>
 
@@ -244,6 +262,7 @@ dtype: float64
 
 <details>
 <summary>Histogram</summary>
+
   ```python
   fig = plt.figure(figsize = (8, 4))
 sns.histplot(data = recipes_df, 
@@ -260,7 +279,7 @@ plt.title('# recipes over time')
 
 
 <details>
-<summary>Regular plt</summary>
+  <summary>Regular plt</summary>
 
   ```python
     fig = plt.figure()
@@ -269,8 +288,49 @@ plt.title('# recipes over time')
     axes.set_title('A simple plot')
     axes.set_xlabel('x')
     plt.show()
+  ```
+
+</details>
+
+<details>
+  <summary>for-loop subplots</summary>
+
+  ```python
+
+fig = plt.figure(figsize=(28,10))
+fig.subplots_adjust(hspace = .5, wspace=.001)
+
+figurecount = 1
+for i in range(2,22,2):    
+    model = AutoReg(dfUse, i)
+    model_fit = model.fit()
+    
+    armodelString = 'AR order: ' + str(i)
+    dftemp = pd.merge(pd.DataFrame(dfUse), pd.DataFrame(model_fit.fittedvalues), left_index=True, right_index=True)
+    dftemp['RSS_elements'] = dftemp.apply(sum_residual_squares, axis=1) 
+    residualList[i]=dftemp['RSS_elements'].sum()
+    rss = "{:.2e}".format(dftemp['RSS_elements'].sum())
+    print('lag = ' + str(i) + ' ,RSS: ' + rss )
+    plt.subplot(2,5,figurecount)
+    plt.plot(dfUse, label='_nolegend_', color="black", linewidth=2)
+    plt.plot(model_fit.fittedvalues, label='_nolegend_', color="blue", linewidth=1)
+    plt.title(armodelString)
+    figurecount +=1
 
   ```
 
 </details>
 
+
+## 4. System (pip) and Modules
+
+<details>
+  <summary>Update package in google colab</summary>
+
+  ```python
+
+      !pip install statsmodels --upgrade
+
+  ```
+
+</details>
