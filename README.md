@@ -243,6 +243,13 @@ dtype: float64
 
   ```
 
+  ```python
+  def format(value):
+    return f"{value:,.4f}"
+
+  format(np.quantile(response_time, .5))
+  ```
+
 </details>
 
 <details>
