@@ -284,6 +284,22 @@ plt.title('# recipes over time')
 ![image](./img/histogram_template.png)
 </details>
 
+<details>
+<summary>Plot Single Graph</summary>
+
+  ```python
+#plot of traffic intensity
+df_k = pd.DataFrame.from_dict(ans_dict, orient='index',columns=['K'])
+fig = plt.figure(figsize=(14,10))
+ax2 = df_k.plot(y='K', style='.-')
+ax2.set_xlabel('Traffic intensity')
+ax2.set_ylabel('K_min (most approximated)')
+ax2.set_xticks(np.arange(0, 1, 0.1))
+ax2.set_yticks(np.arange(0, 50, 5))
+plt.title('Traffic intensity vs. K')
+plt.legend()
+  ```
+</details>
 
 <details>
   <summary>Regular plt</summary>
