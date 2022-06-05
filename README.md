@@ -265,6 +265,22 @@ dtype: float64
 
 ## 3. Visualization
 
+Core concepts:
+1. `fig, ax = plt.subplots()`
+   
+    plt.subplots() is a function that returns a tuple containing a figure and axes object(s). Thus when using fig, ax = plt.subplots() you unpack this tuple into the variables fig and ax. Having fig is useful if you want to change figure-level attributes or save the figure as an image file later (e.g. with fig.savefig('yourfilename.png')). You certainly don't have to use the returned figure object but many people do use it later so it's common to see.** Also, all axes objects (the objects that have plotting methods)**, have a parent figure object anyway, thus:
+2.  
+   1. `df.plot(ax=ax)` : plot 使用指定ax object
+   2. `ax = df.plot.plotFunc` : df.plot then return an ax object
+3. 
+   1. `ax.set_xlabel('xxx', fontsize=15)`
+   2. `ax.set_ylabel('xxx', fontsize=15)`
+   3. `ax.axvline`: vertical line
+   4. `ax.axhline(y=0.3, color='r')` : horizontal line
+   5. `plt.legend(loc='upper right', prop={'size': 10})`
+   6. `plt.title("xxxx", size = 16)`
+   7. `ax.set_yticks([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])` : add a list to ticks argument
+   8. `ax.set_xticks(list(range(5,150,10)))`
 
 
 <details>
